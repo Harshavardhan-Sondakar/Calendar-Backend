@@ -33,8 +33,13 @@ const checkReminders = async () => {
 
 const startReminderService = () => {
   checkReminders();
-  
-  setInterval(checkReminders, 20000);
+  setInterval(checkReminders, 5000);
+  setInterval(() => {
+    const now = new Date();
+    if (now.getSeconds() === 0) {
+      checkReminders();
+    }
+  }, 1000);
 };
 
 module.exports = {
